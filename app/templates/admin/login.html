@@ -2,7 +2,12 @@
 {% block customCSS%}
 <link rel="stylesheet" href="{{url_for('static', filename='css/login.css')}}">
 {%endblock%}
+{% block title%}
+Admin Login
+{{super()}}
+{%endblock%}
 {% include 'includes/navbar_login.html'%}
+
 {%block content%}
 <main class="form-signin w-100 m-auto">
     <form>
@@ -27,7 +32,6 @@
         <button class="btn btn-primary w-100 py-2 mb-2" type="submit">Iniciar Sesion</button>
         <a href="{{url_for('auth.signup')}}">Crear Cuenta</a>
         <br>
-        <a href="{{url_for('auth_admin.login')}}">Iniciar como administrador</a>
         <p class="mt-2 mb-3 text-body-secondary">&copy; 2017–2023</p>
     </form>
 </main>
