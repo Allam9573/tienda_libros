@@ -58,7 +58,7 @@ Upload Books
                     <td>Lps. {{item['precio']}}</td>
                     <td>
                         <a href="#" class="btn btn-primary">Editar</a>
-                        <a href="#" class="btn btn-outline-danger">Eliminar</a>
+                        <a href="{{url_for('admin.delete_book', id=item['id'])}}" class="btn btn-outline-danger">Eliminar</a>
                     </td>
                   </tr>
                  {%endfor%}

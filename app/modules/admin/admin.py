@@ -36,3 +36,11 @@ def books_list():
     cursor.execute("SELECT * FROM libros")
     data = cursor.fetchall()
     return render_template('admin/upload.html', data=data)
+
+
+@bp.route('/delete_book/<id>')
+def delete_book(id):
+    cursor = conexion.cursor(buffered=True)
+    cursor.execute('DELETE FROM libros WHERE id=%s', [id])
+    conexion.commit()
+    return redirect(url_for('admin.books_list'))
