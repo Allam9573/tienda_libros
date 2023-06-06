@@ -1,8 +1,9 @@
 {% extends 'base.html'%}
 {% block title%}
-Upload Books
+{{title}}
 {{super()}}
 {%endblock%}
+{% include 'includes/navbar_admin.html'%}
 {%block content%}
 <div class="container">
     <div class="row mt-5">
@@ -31,7 +32,7 @@ Upload Books
                         <div class="mb-3">
                             <input type="submit" value="Agregar" class="btn btn-success">
                         </div>
-                        
+
                     </form>
                 </div>
             </div>
@@ -40,33 +41,37 @@ Upload Books
             <h2>Libros registrados:</h2>
             <table class="table">
                 <thead class="table-dark">
-                  <tr>
-                    <th scope="col">#ID</th>
-                    <th scope="col">Libro</th>
-                    <th scope="col">Autor</th>
-                    <th scope="col">Precio</th>
-                    <th scope="col">Acciones</th>
-                  </tr>
+                    <tr>
+                        <th scope="col">#ID</th>
+                        <th scope="col">Libro</th>
+                        <th scope="col">Autor</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
                 </thead>
                 <tbody>
-                 {% if data %}
-                 {% for item in data%}
-                 <tr>
-                    <th scope="row">{{item['id']}}</th>
-                    <td>{{item['nombre']}}</td>
-                    <td>{{item['autor']}}</td>
-                    <td>Lps. {{item['precio']}}</td>
-                    <td>
-                        <a href="#" class="btn btn-primary">Editar</a>
-                        <a href="{{url_for('admin.delete_book', id=item['id'])}}" class="btn btn-outline-danger">Eliminar</a>
-                    </td>
-                  </tr>
-                 {%endfor%}
-                 {%else%}
-                 <h2>No hay libros en registro</h2>
-                 {%endif%}
+                    {% if data %}
+                    {% for item in data%}
+                    <tr>
+                        <th scope="row">{{item[0]}}</th>
+                        <td>{{item[1]}}</td>
+                        <td>{{item[2]}}</td>
+                        <td>Lps. {{item[4]}}</td>
+                        <td>URL {{item[3]}}</td>
+                        <td><img src="{{url_for('static', filename='img/item[3]')}}" alt="Imagen"></td>
+                        <td>
+                            <a href="#" class="btn btn-primary">Editar</a>
+                            <a href="{{url_for('admin.delete_book', id=item[0])}}"
+                                class="btn btn-outline-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                    {%endfor%}
+                    {%else%}
+                    <h2>No hay libros en registro</h2>
+                    {%endif%}
                 </tbody>
-              </table>
+            </table>
         </div>
     </div>
 </div>
