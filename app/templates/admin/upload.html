@@ -12,12 +12,15 @@ Upload Books
                     <h3>Datos del libro:</h3>
                 </div>
                 <div class="card-body">
-                    <form action="{{url_for('admin.upload')}}" method="post">
+                    <form action="{{url_for('admin.upload')}}" method="POST" enctype="multipart/form-data">
                         <div class="input-group mb-3">
                             <input type="text" name="nombre" placeholder="Nombre del libro" class="form-control">
                         </div>
+                        <div class="input-group mb-3">
+                            <input type="text" name="autor" placeholder="Autor" class="form-control">
+                        </div>
                         <div class="mb-3">
-                            <input type="text" name="imagenURL" placeholder="Imagen (URL)" class="form-control">
+                            <input type="file" name="imagenURL" placeholder="Imagen (URL)" class="form-control">
                         </div>
                         <div class="mb-3">
                             <input type="text" name="url" placeholder="URL descarga" class="form-control">
@@ -46,7 +49,9 @@ Upload Books
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                 {% if data %}
+                 {% for item in data%}
+                 <tr>
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td>Otto</td>
@@ -56,7 +61,8 @@ Upload Books
                         <a href="#" class="btn btn-outline-danger">Eliminar</a>
                     </td>
                   </tr>
-                  <tr>
+                 {%endfor%}
+                 {%endif%}
                 </tbody>
               </table>
         </div>
