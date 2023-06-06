@@ -58,8 +58,7 @@
                         <td>{{item[1]}}</td>
                         <td>{{item[2]}}</td>
                         <td>Lps. {{item[4]}}</td>
-                        <td>URL {{item[3]}}</td>
-                        <td><img src="{{url_for('static', filename='img/item[3]')}}" alt="Imagen"></td>
+                        <td><img src="{{url_for('static', filename='img/'+item[3])}}" alt="Imagen" width="200px"></td>
                         <td>
                             <a href="#" class="btn btn-primary">Editar</a>
                             <a href="{{url_for('admin.delete_book', id=item[0])}}"

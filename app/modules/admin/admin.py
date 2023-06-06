@@ -31,7 +31,7 @@ def upload():
         conexion.commit()
         return redirect(url_for('admin.books_list'))
     else:
-        cursor = conexion.cursor(dictionary=True)
+        cursor = conexion.cursor(buffered=True)
         cursor.execute("SELECT * FROM libros")
         data = cursor.fetchall()
     return render_template('admin/upload.html', data=data, title='Upload Book')
