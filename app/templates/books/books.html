@@ -6,25 +6,31 @@ Books
 {% include 'includes/navbar_home.html'%}
 {%block content%}
 <div class="container">
+    {% if data %}
     <div class="row">
         <div class="col-md-3">
+            {% for item in data %}
             <div class="card">
-                <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ffiles.magzter.com%2Fresize%2Fmagazine%2F1578317377%2F1596111898%2Fview%2F3.jpg&f=1&nofb=1&ipt=128d46643a1d1530c9b97498987c8607b1306c0bdd7e62297c528283fa7aa6b8&ipo=images"
+                <img src="{{url_for('static', filename='img/'+item['imagen'])}}"
                     alt="" class="card-img-top">
                 <div class="card-body">
                     <h4 class="card-title">
-                        Python Manual
+                        {{item['nombre']}}
                     </h4>
                     <p class="card-text">
                         <a href="" class="btn btn-primary">Descargar</a>
                     </p>
                 </div>
             </div>
+            {%endfor%}
         </div>
         <div class="col-md-3">2</div>
         <div class="col-md-3"></div>
         <div class="col-md-3">4</div>
     </div>
+    {%else%}
+    <h2>No hay libros en sistema</h2>
+    {%endif%}
 </div>
 <!-- {% include 'includes/footer.html'%} -->
 {%endblock%}
